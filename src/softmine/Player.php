@@ -259,3 +259,8 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 	public function isBanned(){
 		return $this->server->getNameBans()->isBanned(strtolower($this->getName()));
 	}
+	
+	public function getPlayer(){
+		return $this;
+	}
+	}
