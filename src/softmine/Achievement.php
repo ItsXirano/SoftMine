@@ -1,10 +1,7 @@
 <?php
-
 namespace softmine;
-
 use softmine\event\TranslationContainer;
 use softmine\utils\TextFormat;
-
 abstract class Achievement{
 	/**
 	 * @var array[]
@@ -79,10 +76,7 @@ abstract class Achievement{
 				"acquireIron",
 			],
 		],
-
-	];
-
-
+        ];
 	public static function broadcast(Player $player, $achievementId){
 		if(isset(Achievement::$list[$achievementId])){
 			$translation = new TranslationContainer("chat.type.achievement", [$player->getDisplayName(), TextFormat::GREEN . Achievement::$list[$achievementId]["name"]]);
@@ -91,25 +85,23 @@ abstract class Achievement{
 			}else{
 				$player->sendMessage($translation);
 			}
-
 			return true;
 		}
-
 		return false;
 	}
-
 	public static function add($achievementId, $achievementName, array $requires = []){
-		if(!isset(Achievement::$list[$achievementId])){
-			Achievement::$list[$achievementId] = [
+        if(!isset(Achievement::$list{
+            $achievementId       
+        })){
+                Achievement::$list{
+                    $achievementId
+                            
+                } = [
 				"name" => $achievementName,
 				"requires" => $requires,
 			];
-
 			return true;
 		}
-
 		return false;
 	}
-
-
 }
