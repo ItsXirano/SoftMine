@@ -1,0 +1,32 @@
+#Mob AI
+ai:
+ #AI switch
+ enable: true
+ #Zombie
+ zombie: false
+ #PigZombie's AI
+ pigzombie: true
+ #the AI of cow and mushroom cow
+ cow: true
+ #Chicken's AI
+ chicken: true
+ #Sheep's AI
+ sheep: true
+ #Pigs' AI
+ pig: true
+ #Skeleton's AI
+ skeleton: true
+ #Creeper's AI
+ creeper: true
+ #Iron golem's AI
+ iron-golem: true
+ #Snow golem's AI
+ snow-golem: true
+ #Enderman AI
+ enderman: true
+ #Destory blocks if creeper exploded
+ creeper-break-blocks: false
+ #Enderman pick blocks
+ enderman-pick-blocks: false
+ #Choose if allow mob auto generate
+ mobgenerate: false
