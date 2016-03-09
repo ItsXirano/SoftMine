@@ -20,7 +20,7 @@ SoftMine e um Conteudo Terceiro do PocketMine, Baseado no Genisys e ImagicalMine
 
 # English - Ingles
 
-## O'Que SoftMine will bring?
+## What SoftMine will bring?
 - Plugins System (New)
 - Optimization to Minecraft PocketEdition
 - Optimization to Minecraft PC 1.8 - 1.9
