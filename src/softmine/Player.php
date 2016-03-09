@@ -263,4 +263,7 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 	public function getPlayer(){
 		return $this;
 	}
+	
+	public function getFirstPlayed(){
+		return $this->namedtag instanceof Compound ? $this->namedtag["firstPlayed"] : null;
 	}
