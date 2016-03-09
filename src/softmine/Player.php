@@ -247,3 +247,15 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 		]);
 	}
 	}
+	
+	public function getClientId(){
+		return $this->randomClientId;
+	}
+
+	public function getClientSecret(){
+		return $this->clientSecret;
+	}
+
+	public function isBanned(){
+		return $this->server->getNameBans()->isBanned(strtolower($this->getName()));
+	}
