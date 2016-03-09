@@ -259,7 +259,27 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 	public function isBanned(){
 		return $this->server->getNameBans()->isBanned(strtolower($this->getName()));
 	}
-	
+
+	public function setBanned($value){
+		if($value === true){
+			$this->server->getNameBans()->addBan($this->getName(), null, null, null);
+			$this->kick("You have been banned");
+		}else{
+			$this->server->getNameBans()->remove($this->getName());
+		}
+	}
+
+	public function isWhitelisted(){
+		return $this->server->isWhitelisted(strtolower($this->getName()));
+	}
+
+	public function setWhitelisted($value){
+		if($value === true){
+			$this->server->addWhitelist(strtolower($this->getName()));
+		}else{
+			$this->server->removeWhitelist(strtolower($this->getName()));
+		}
+	}
 	public function getPlayer(){
 		return $this;
 	}
