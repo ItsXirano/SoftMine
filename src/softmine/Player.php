@@ -287,3 +287,79 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 	public function getFirstPlayed(){
 		return $this->namedtag instanceof Compound ? $this->namedtag["firstPlayed"] : null;
 	}
+	
+		public function getLastPlayed(){
+		return $this->namedtag instanceof Compound ? $this->namedtag["lastPlayed"] : null;
+	}
+
+	public function hasPlayedBefore(){
+		return $this->namedtag instanceof Compound;
+	}
+
+	public function setAllowFlight($value){
+		$this->allowFlight = (bool) $value;
+		$this->sendSettings();
+	}
+
+	public function getAllowFlight(){
+		return $this->allowFlight;
+	}
+
+	public function setAutoJump($value){
+		$this->autoJump = $value;
+		$this->sendSettings();
+	}
+
+	public function hasAutoJump(){
+		return $this->autoJump;
+	}
+
+	/**
+	 * @param Player $player
+	 */
+	public function spawnTo(Player $player){
+		if($this->spawned and $player->spawned and $this->isAlive() and $player->isAlive() and $player->getLevel() === $this->level and $player->canSee($this) and !$this->isSpectator()){
+			parent::spawnTo($player);
+		}
+	}
+
+	/**
+	 * @return Server
+	 */
+	public function getServer(){
+		return $this->server;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function getRemoveFormat(){
+		return $this->removeFormat;
+	}
+
+	/**
+	 * @param bool $remove
+	 */
+	public function setRemoveFormat($remove = true){
+		$this->removeFormat = (bool) $remove;
+	}
+
+	/**
+	 * @param Player $player
+	 *
+	 * @return bool
+	 */
+	public function canSee(Player $player){
+		return !isset($this->hiddenPlayers[$player->getRawUniqueId()]);
+	}
+
+	/**
+	 * @param Player $player
+	 */
+	public function hidePlayer(Player $player){
+		if($player === $this){
+			return;
+		}
+		$this->hiddenPlayers[$player->getRawUniqueId()] = $player;
+		$player->despawnFrom($this);
+	}
