@@ -54,7 +54,7 @@ namespace softmine {
 	use softmine\wizard\Installer;
 
 	const VERSION = "1.7dev";
-	const API_VERSION = "1.13.1";
+	const API_VERSION = "1.14.0";
 	const CODENAME = "[REDACTED]";
 	const MINECRAFT_VERSION = "v0.14.0 alpha";
 	const MINECRAFT_VERSION_NETWORK = "0.14.0";
