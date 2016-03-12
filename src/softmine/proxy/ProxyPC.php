@@ -60,7 +60,30 @@ use softmine\utils\TextFormat;
 
 class ProxyPC extends NetWork{
   
-  const VERSION = "1.9";
-	const PROTOCOL = 107;
+	const VERSION = "1.9";
+	const PROTOCOL = 47;
+	
+	const CURRENT_PROTOCOL = 47;
+	const TARGET_PROTOCOL = 45;
+	
+	const CURRENT_MINECRAFT_VERSION_NETWORK = "1.9";
+	
+		public function onEnable(){
+		$this->saveDefaultConfig();
 
+		$port = (int) $this->getConfig()->get("port");
+		if($port === $this->getServer()->getPort()){
+			$this->getLogger()->error("In Config.yml edit Port");
+			return;
+		}
+
+		if(Info::CURRENT_PROTOCOL !== self::TARGET_PROTOCOL){
+			$this->getLogger()->error("Protocol is Error");
+			return;
+		}
+
+		$this->getLogger()->info("Starting Minecraft PC server ".$this->getDescription()->getVersion()." on port $port");
+		$interface = new NewInterface($this->getServer(), $port);
+		$this->getServer()->getNetwork()->registerInterface($interface);
+	}
 }
