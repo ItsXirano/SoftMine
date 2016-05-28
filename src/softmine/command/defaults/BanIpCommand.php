@@ -25,6 +25,7 @@ use softmine\command\Command;
 use softmine\command\CommandSender;
 use softmine\event\TranslationContainer;
 use softmine\Player;
+use softmine\Server;
 
 
 class BanIpCommand extends VanillaCommand{
@@ -59,7 +60,7 @@ class BanIpCommand extends VanillaCommand{
 		}else{
 			if(($player = $sender->getServer()->getPlayer($value)) instanceof Player){
 				$this->processIPBan($player->getAddress(), $sender, $reason);
-
+				Server::getInstance()->broadcastMessage("§bPlayer: §c".$player->getName()."(".$player->getAddress().") §bbanido por §c".$reason." §bpelo §c".$sender->getName());
 				Command::broadcastCommandMessage($sender, new TranslationContainer("commands.banip.success.players", [$player->getAddress(), $player->getName()]));
 			}else{
 				$sender->sendMessage(new TranslationContainer("commands.banip.invalid"));
